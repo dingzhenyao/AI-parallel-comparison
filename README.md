@@ -97,8 +97,6 @@ git clone https://www.modelscope.cn/qwen/Qwen-7B-Chat.git
 # 清华智谱
 git clone https://www.modelscope.cn/ZhipuAI/chatglm3-6b.git
 
-# 百川智能
-git clone https://www.modelscope.cn/baichuan-inc/Baichuan2-7B-Base.git
 ```
 
 > **存储建议**：  
@@ -109,11 +107,11 @@ git clone https://www.modelscope.cn/baichuan-inc/Baichuan2-7B-Base.git
 ## 五、运行推理
 
 ### 1. 创建推理脚本
-在 `/mnt/workspace` 创建 `run_qwen_cpu.py`：
+在 `/mnt/workspace` 创建 `run_qwen.py`：
 ```python
 from transformers import TextStreamer, AutoTokenizer, AutoModelForCausalLM
 
-model_name = "/mnt/data/Qwen-7B-Chat"  # 修改为你的模型路径
+model_name = "/mnt/data/Qwen-7B-Chat"  # 修改为模型路径
 prompt = "请说出以下两句话区别在哪里？1、冬天：能穿多少穿多少 2、夏天：能穿多少穿多少"
 
 tokenizer = AutoTokenizer.from_pretrained(
@@ -133,20 +131,9 @@ outputs = model.generate(inputs, streamer=streamer, max_new_tokens=300)
 
 ### 2. 执行推理
 ```bash
-python run_qwen_cpu.py
+python run_qwe.py
 ```
 
----
-
-## 六、推荐模型列表
-| 开发机构 | 模型 | 克隆命令 |
-|---------|------|----------|
-| **清华智谱** | ChatGLM3-6B | `git clone https://www.modelscope.cn/ZhipuAI/chatglm3-6b.git` |
-| **百川智能** | Baichuan2-7B | `git clone https://www.modelscope.cn/baichuan-inc/Baichuan2-7B-Base.git` |
-| **深度求索** | DeepSeek | 参考[官方文档](https://github.com/deepseek-ai) |
-| **智源研究院** | BLOOMZ-zh | 参考[官方文档](https://github.com/BlinkDL) |
-
----
 
 ## 常见问题解决
 1. **conda 命令未找到**  
